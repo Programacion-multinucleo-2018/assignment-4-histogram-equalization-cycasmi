@@ -26,6 +26,7 @@ Rubric:
 7. Calculation times and speedup obtained are incuded in the Readme.
 
 RUNTIMES
+
 |	CPU			|	GPU			|
 | ------------- | ------------- |
 | 11.16938 ms   | 0.029821 ms   |
