@@ -39,4 +39,4 @@ $(GPUOBJ): $(GPU)
 
 # Clear the compiled files
 clean:
-	rm -rf *.o $(CPUOUT) $(GPUOUT) $(IMAGES)
+	rm -rf *.o $(CPUOUT) $(GPUOUT) $(GPUOBJ) $(CPUOBJ)  $(IMAGES)
