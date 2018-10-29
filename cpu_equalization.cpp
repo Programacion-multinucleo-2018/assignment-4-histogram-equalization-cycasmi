@@ -20,7 +20,7 @@
 
 using namespace std;
 
-void CPU_blur_image(const cv::Mat& M_input, cv::Mat& M_output)
+void CPU_img_equalization(const cv::Mat& M_input, cv::Mat& M_output)
 {	
 	int histogram[256] = {0}; //of pixels
 	int histogram_s[256] = {0}; //Cumulative Sum of pixels values
@@ -60,7 +60,6 @@ void CPU_blur_image(const cv::Mat& M_input, cv::Mat& M_output)
 	//cout << "suma acumulada normalizada inicial: " << lookUp[0] << endl;
 	//cout << "suma acumulada normalizada final: " << lookUp[255] << endl;
 	
-	#pragma omp parallel for collapse(2)
 	int index = 0;
 	for (int i = 0; i < M_input.cols; i++)
 	{
@@ -109,20 +108,20 @@ int main(int argc, char *argv[])
 	chrono::duration<float, std::milli> duration_ms = chrono::high_resolution_clock::duration::zero();
 	auto start =  chrono::high_resolution_clock::now();
 	
-	CPU_blur_image(input, output);
+	CPU_img_equalization(input, output);
 
 	auto end =  chrono::high_resolution_clock::now();
 	duration_ms = end - start;
-	printf("CPU image blurring elapsed %f ms\n\n", duration_ms.count());
+	printf("CPU image equalization elapsed %f ms\n\n", duration_ms.count());
 
 	/* ********* DISPLAY IMAGES **********/
 	//Allow the windows to resize
-	//namedWindow("CPU INPUT", cv::WINDOW_NORMAL);
-	//namedWindow("CPU OUTPUT", cv::WINDOW_NORMAL);
+	namedWindow("CPU INPUT", cv::WINDOW_NORMAL);
+	namedWindow("CPU OUTPUT", cv::WINDOW_NORMAL);
 
 	//Show the input and output
-	//imshow("CPU INPUT", input);
-	//imshow("CPU OUTPUT", output);
+	imshow("CPU INPUT", input);
+	imshow("CPU OUTPUT", output);
 	
 	//Wait for key press
 	cv::waitKey();

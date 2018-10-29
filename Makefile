@@ -1,29 +1,30 @@
 ### Variables for this project ###
-GPUOBJ = image_blurring.o
-CPUOBJ = cpu_image_blurring.o
+GPUOBJ = gpu_equalization.o
+CPUOBJ = cpu_equalization.o
 
 # The executable programs to be created
-CPU = cpu_image_blurring.cpp
-GPU = image_blurring.cu
+CPU = cpu_equalization.cpp
+GPU = gpu_equalization.cu
 
 CC = nvcc
 GCC = g++
 
 CFLAGS = -std=c++11
+OMP = -fopenmp
 CVFLAGS = `pkg-config --cflags --libs opencv`
 LDFLAGS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
-GPUOUT = GPU_blurring.exe
-CPUOUT = CPU_blurring.exe
+GPUOUT = GPU_equalization.exe
+CPUOUT = CPU_equalization.exe
 
-IMAGES = GPU_Altered_Image.jpg CPU_Altered_Image.jpg OMP_Altered_Image.jpg
+IMAGES = GPU_Altered_Image.jpg CPU_Altered_Image.jpg
 
 # Default rule
 all: $(CPUOUT) $(GPUOUT)
 
 # Rule to make the CPU program
 $(CPUOUT): $(CPUOBJ)
-	$(GCC) $^ -o $(CPUOUT) $(CFLAGS) $(CVFLAGS)
+	$(GCC) $^ -o $(CPUOUT) $(CFLAGS) $(OMP) $(CVFLAGS)
 
 # Rule to make the GPU program
 $(GPUOUT): $(GPUOBJ)
