@@ -25,4 +25,23 @@ Rubric:
 6. Both images are displayed at the end.
 7. Calculation times and speedup obtained are incuded in the Readme.
 
+RUNTIMES
+|	CPU			|	GPU			|
+| ------------- | ------------- |
+| 11.16938 ms   | 0.029821 ms   |
+| 11.18437 ms   | 0.009073 ms   |
+| 11.21980 ms   | 0.008537 ms   |
+| 11.22821 ms   | 0.008090 ms   |
+| 11.23945 ms   | 0.007580 ms   |
+| 11.23881 ms   | 0.007842 ms   |
+| 11.15272 ms   | 0.007705 ms   |
+| 11.23689 ms   | 0.019673 ms   |
+| 11.13734 ms   | 0.006607 ms   |
+| 11.19706 ms   | 0.006548 ms   |
+|	Average		|	Average		|
+| ------------- | ------------- |
+| 11.20821 ms   | 0.029821 ms   |
+
+** SPEEDUP: 375.85 **
+
 **Grade: 70**
